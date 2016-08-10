@@ -1,0 +1,36 @@
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th width="5%">#</th>
+      <th width="10%">Confirmed at</th>
+      <th width="10%">Impersonate</th>
+      <th width="35%">Email</th>
+      <th width="10%">Signed up</th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <% User.all.order('created_at DESC').each do |user| %>
+      <tr>
+        <td>
+          <%= user.id %>
+        </td>
+        <td>
+          <%= user.confirmed_at %>
+        </td>
+        <td>
+          <%= link_to 'impersonate', admin_connect_as_path(user.id), method: :patch, target: '_blank' %>
+        </td>
+        <td>
+          <%= user.email %>
+        </td>
+        <td>
+          <%= time_ago_in_words user.created_at %>
+        </td>
+        <td>
+          <%= link_to 'Crawl', admin_crawl_path(user.id), method: :patch %>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>

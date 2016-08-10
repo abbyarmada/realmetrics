@@ -1,0 +1,49 @@
+<header>
+  Set goals in batch
+</header>
+
+<form novalidate>
+  <div>
+    <p>
+      You can create a goal for a point in time and we will grow it by the percentage you indicate for the following months.
+    </p>
+    <p>
+      Don't worry, you will also be able to customize theses goals per month afterwards.
+    </p>
+  </div>
+
+  <div layout="row">
+    <md-input-container flex="33">
+      <label>Year</label>
+      <md-select ng-model="goal.year">
+        <md-option value="2016" ng-selected="true">2016</md-option>
+      </md-select>
+    </md-input-container>
+
+    <md-input-container flex="33">
+      <label>Month</label>
+      <md-select ng-model="goal.month">
+        <md-option ng-repeat="month in [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12]" value="{{ month }}" ng-selected="{{ $index === 0 }}">{{ month | monthName }}</md-option>
+      </md-select>
+    </md-input-container>
+  </div>
+
+  <div layout="row">
+    <md-input-container flex="33">
+      <label>Value</label>
+      <input type="text" ng-model="goal.value" required>
+    </md-input-container>
+  </div>
+
+  <div layout="row">
+    <md-input-container flex="33">
+      <label>% growth per month</label>
+      <input type="text" ng-model="goal.growth" required>
+    </md-input-container>
+  </div>
+
+  <footer>
+    <md-button class="md-raised md-primary" ng-click="create()">Save</md-button>
+    <md-button class="md-raised" ng-click="cancel()">Cancel</md-button>
+  </footer>
+</form>

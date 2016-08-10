@@ -1,0 +1,23 @@
+<header>
+  Edit goals manually
+</header>
+
+<form novalidate>
+  <div layout="row" ng-repeat="goal in goals | orderBy: ['year', 'month']">
+
+    <md-input-container flex="30">
+      <label>Year/Month</label>
+      <input type="text" value="{{ goal.month | monthName }} {{ goal.year }}" disabled>
+    </md-input-container>
+
+    <md-input-container flex="33">
+      <label>Value</label>
+      <input type="text" ng-model="goal.value" required>
+    </md-input-container>
+  </div>
+
+  <footer>
+    <md-button class="md-raised md-primary" ng-click="update()">Save</md-button>
+    <md-button class="md-raised" ng-click="cancel()">Cancel</md-button>
+  </footer>
+</form>

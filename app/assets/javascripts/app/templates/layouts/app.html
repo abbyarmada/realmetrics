@@ -1,0 +1,60 @@
+<div layout="column" class="app">
+  <section layout="row" flex>
+    <md-content flex>
+      <md-toolbar>
+        <div class="md-toolbar-tools">
+          <a class="brand" ui-sref="home">RealMetrics</a>
+
+          <span flex>
+            <a class="btn" ui-sref="home">
+              <i class="material-icons">home</i>
+              <span>Dashboard</span>
+            </a>
+
+            <a class="btn" ui-sref="goals">
+              <i class="material-icons">my_location</i>
+              <span>Goals</span>
+            </a>
+
+            <!--
+            <a class="btn" ui-sref="customers">
+              <i class="material-icons">people</i>
+              <span>Customers</span>
+            </a>
+
+            <a class="btn" ui-sref="plans">
+              <i class="material-icons">label</i>
+              <span>Plans</span>
+            </a>
+            -->
+
+            <a class="btn" ui-sref="integrations">
+              <i class="material-icons">settings</i>
+              <span>Integrations</span>
+            </a>
+          </span>
+
+
+
+          <span class="welcome">Welcome, {{ current_user.email }}</span>
+
+          <a class="btn" href="mailto:dominic@realmetrics.io">
+            <i class="material-icons">email</i>
+            <span>Contact Us</span>
+          </a>
+
+          <a class="btn logout-btn" ng-click="logout()">
+            <i class="material-icons">power_settings_new</i>
+          </a>
+        </div>
+      </md-toolbar>
+
+      <main ui-view></main>
+    </md-content>
+  </section>
+
+  <aside id="sidepanel">
+    <div id="sidepanel-background"></div>
+    <div ui-view="sidepanel" id="sidepanel-container"></div>
+  </aside>
+</div>

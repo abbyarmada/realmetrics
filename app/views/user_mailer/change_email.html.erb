@@ -1,0 +1,6 @@
+<p>Hello!</p>
+
+<p>
+  Please confirm your email:
+  <%= link_to 'Click here to confirm it.', "#{ActionMailer::Base.default_url_options[:host]}/registrations/confirm/#{@user.confirmation_token}" %>
+</p>

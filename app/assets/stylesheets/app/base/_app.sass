@@ -1,0 +1,57 @@
+.app
+  min-height: 100vh
+
+  .brand
+    font-family: $fontHeaderStack
+    font-size: 36px
+    font-weight: bold
+    margin-left: 20px
+    margin-right: 20px
+
+  section
+    > md-content
+      background-color: #f0f0f0
+
+      md-toolbar
+        background-color: $mainColor
+
+        .md-toolbar-tools
+          padding: 0
+
+        .welcome
+          font-size: 15px
+          margin-right: 20px
+
+        .btn
+          display: inline-block
+          padding: 18px 20px 17px
+
+          span
+            position: relative
+            top: -6px
+            font-size: 15px
+
+          &:hover
+            background-color: rgba(0, 0, 0, .1)
+            cursor: pointer
+
+          &.logout-btn
+            background-color: $declineColor
+
+            &:hover
+              background-color: rgba($declineColor, .9)
+
+      main
+        margin: 50px 10px
+
+  h1.page-header
+    background-color: white
+    margin: -50px -10px 50px -10px
+    padding: 25px 50px
+
+    small
+      font-size: 16px
+      color: $darkGray
+      margin-left: 30px
+      position: relative
+      top: -1px

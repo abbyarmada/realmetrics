@@ -1,0 +1,75 @@
+.ct-chart-legend
+  list-style-type: none
+  text-align: center
+  margin: 0
+  padding: 20px 0 0 0
+
+  li
+    display: inline-block
+    margin: 0 30px
+    position: relative
+    top: -20px
+    font-weight: bold
+
+    &:before
+      content: ' '
+      width: 20px
+      height: 20px
+      display: block
+      position: relative
+      background-color: black
+      top: 20px
+      left: -30px
+      border-radius: 100%
+
+  .ct-series-a
+    color: orange
+
+    &:before
+      background-color: orange
+
+.ct-series-a
+  path.ct-line
+    stroke: orange
+
+  line.ct-point
+    stroke: orange
+
+.ct-chart-legend
+  .ct-series-b
+    color: green
+
+    &:before
+      background-color: green
+
+.ct-series-b
+  path.ct-line
+    stroke: green
+
+  line.ct-point
+    stroke: green
+
+.ct-wrapper
+  padding: 12px 60px 25px 65px
+
+.ct-chart
+  width: 100%
+  min-width: 100%
+  max-width: 100%
+
+  height: 300px
+  min-height: 300px
+  max-height: 300px
+
+  .ct-chart-line
+    margin-left: -15px
+    padding: 0 30px 0 0
+
+.ct-labels
+  .ct-label
+    &.ct-vertical
+      width: 100px !important
+      overflow: visible
+      padding-top: 15px
+      margin-left: -75px
+      position: relative

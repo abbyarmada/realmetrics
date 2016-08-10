@@ -1,0 +1,24 @@
+<div layout="column" layout-align="center center" flex="100">
+  <md-card class="md-whiteframe-9dp">
+    <md-card-header>
+      <h1>Choose wisely</h1>
+    </md-card-header>
+
+    <md-card-content>
+      <form name="form" novalidate ng-submit="updatePassword(form)">
+        <div layout="row">
+          <md-input-container>
+            <label>New password</label>
+            <input type="password" ng-model="user.password" required>
+          </md-input-container>
+        </div>
+
+        <div layout="row">
+          <div flex>
+            <md-button type="submit" class="md-raised md-primary">Reset my password</md-button>
+          </div>
+        </div>
+      </form>
+    </md-card-content>
+  </md-card>
+</div>

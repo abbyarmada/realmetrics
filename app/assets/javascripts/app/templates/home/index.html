@@ -1,0 +1,185 @@
+<div ng-if="!current_organization.initial_crawl_completed" layout="column" layout-align="center center">
+  <md-progress-circular md-mode="indeterminate" md-diameter="200"></md-progress-circular>
+
+  <p class="align-center">We are loading your data from Stripe.<br>Depending on your history, this make takes a couple of minutes.</p>
+  <p class="align-center">You will receive an email when the process is over.<br>Meanwhile, you can start <a ui-sref="goals">describing your goals</a>.</p>
+  <p class="align-center">You can leave this page, doing so won't stop the loading process. <br>You can also stay, the page will auto update when the process is completed.</p>
+</div>
+
+<div layout="row" ng-if="current_organization.initial_crawl_completed">
+  <div layout="column" flex>
+    <div layout="column">
+      <div class="align-center">
+        <span class="kpi-header">Revenues per month</span>
+      </div>
+
+      <div class="kpi">
+        <span class="kpi-title">YTD</span>
+        <span class="kpi-amount">{{ revenues.kpis.ytd.amount / 100 | currency }}</span>
+        <span class="kpi-goal">{{ revenues.kpis.ytd.goal / 100 | currency }}</span>
+        <span class="kpi-completion" ng-class="{'good': revenues.kpis.ytd.completion >= 100, 'bad': revenues.kpis.ytd.completion < 80, 'warning': revenues.kpis.ytd.completion < 100 && revenues.kpis.ytd.completion >= 80}"><i class="material-icons">my_location</i> {{ revenues.kpis.ytd.completion }} %</span>
+        <span class="kpi-growth" ng-class="{'good': revenues.kpis.ytd.growth > 0, 'bad': revenues.kpis.ytd.growth < 0, 'warning': revenues.kpis.ytd.growth === 0}">
+          <i class="material-icons" ng-if="revenues.kpis.ytd.growth >= 0">trending_up</i>
+          <i class="material-icons" ng-if="revenues.kpis.ytd.growth < 0">trending_down</i>
+          {{ revenues.kpis.ytd.growth }} %
+        </span>
+      </div>
+
+      <div class="kpi">
+        <span class="kpi-title">MTD</span>
+        <span class="kpi-amount">{{ revenues.kpis.mtd.amount / 100 | currency }}</span>
+        <span class="kpi-goal">{{ revenues.kpis.mtd.goal / 100 | currency }}</span>
+        <span class="kpi-completion" ng-class="{'good': revenues.kpis.mtd.completion >= 100, 'bad': revenues.kpis.mtd.completion < 80, 'warning': revenues.kpis.mtd.completion < 100 && revenues.kpis.mtd.completion >= 80}"><i class="material-icons">my_location</i> {{ revenues.kpis.mtd.completion }} %</span>
+        <span class="kpi-growth" ng-class="{'good': revenues.kpis.mtd.growth > 0, 'bad': revenues.kpis.mtd.growth < 0, 'warning': revenues.kpis.mtd.growth === 0}">
+          <i class="material-icons" ng-if="revenues.kpis.mtd.growth >= 0">trending_up</i>
+          <i class="material-icons" ng-if="revenues.kpis.mtd.growth < 0">trending_down</i>
+          {{ revenues.kpis.mtd.growth }} %
+        </span>
+      </div>
+    </div>
+
+    <div class="ct-wrapper">
+      <div class="ct-chart" id="revenuesReport"></div>
+
+      <ul class="ct-chart-legend">
+        <li class="ct-series-b">Revenues</li>
+        <li class="ct-series-a">Goal</li>
+      </ul>
+    </div>
+  </div>
+
+  <div layout="column" flex>
+    <div layout="column">
+      <div class="align-center">
+        <span class="kpi-header">Customers per month</span>
+      </div>
+
+      <div class="kpi">
+        <span class="kpi-title">YTD</span>
+        <span class="kpi-amount">{{ customers.kpis.ytd.amount }}</span>
+        <span class="kpi-goal">{{ customers.kpis.ytd.goal }}</span>
+        <span class="kpi-completion" ng-class="{'good': customers.kpis.ytd.completion >= 100, 'bad': customers.kpis.ytd.completion < 80, 'warning': customers.kpis.ytd.completion < 100 && customers.kpis.ytd.completion >= 80}"><i class="material-icons">my_location</i> {{ customers.kpis.ytd.completion }} %</span>
+        <span class="kpi-growth" ng-class="{'good': customers.kpis.ytd.growth > 0, 'bad': customers.kpis.ytd.growth < 0, 'warning': customers.kpis.ytd.growth === 0}">
+          <i class="material-icons" ng-if="customers.kpis.ytd.growth >= 0">trending_up</i>
+          <i class="material-icons" ng-if="customers.kpis.ytd.growth < 0">trending_down</i>
+          {{ customers.kpis.ytd.growth }} %
+        </span>
+      </div>
+
+      <div class="kpi">
+        <span class="kpi-title">MTD</span>
+        <span class="kpi-amount">{{ customers.kpis.mtd.amount }}</span>
+        <span class="kpi-goal">{{ customers.kpis.mtd.goal }}</span>
+        <span class="kpi-completion" ng-class="{'good': customers.kpis.mtd.completion >= 100, 'bad': customers.kpis.mtd.completion < 80, 'warning': customers.kpis.mtd.completion < 100 && customers.kpis.mtd.completion >= 80}"><i class="material-icons">my_location</i> {{ customers.kpis.mtd.completion }} %</span>
+        <span class="kpi-growth" ng-class="{'good': customers.kpis.mtd.growth > 0, 'bad': customers.kpis.mtd.growth < 0, 'warning': customers.kpis.mtd.growth === 0}">
+          <i class="material-icons" ng-if="customers.kpis.mtd.growth >= 0">trending_up</i>
+          <i class="material-icons" ng-if="customers.kpis.mtd.growth < 0">trending_down</i>
+          {{ customers.kpis.mtd.growth }} %
+        </span>
+      </div>
+    </div>
+
+    <div class="ct-wrapper">
+      <div class="ct-chart" id="customersReport"></div>
+
+      <ul class="ct-chart-legend">
+        <li class="ct-series-b">Customers</li>
+        <li class="ct-series-a">Goal</li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+  <md-card class="details md-whiteframe-z2" ng-repeat="line in revenues.data">
+    <md-card-title>
+      <h3>Revenues</h3>
+    </md-card-title>
+
+    <md-card-content>
+      <table class="table">
+        <tbody>
+          <tr>
+            <td width="16%">&nbsp;</td>
+            <td ng-repeat="data in line.data" class="align-right" width="7%">
+              {{ data.month | shortMonthName }}
+            </td>
+          </tr>
+
+          <tr>
+            <td>Revenues</td>
+            <td ng-repeat="data in line.data" class="align-right">
+              <span ng-if="data.amount && data.amount !== 0">{{ data.amount / 100 | currency }}</span>
+            </td>
+          </tr>
+
+          <tr>
+            <td>Goal</td>
+            <td ng-repeat="data in line.data" class="align-right">
+              {{ data.goal / 100 | currency }}
+            </td>
+          </tr>
+
+          <tr>
+            <td>Goal completion</td>
+            <td ng-repeat="data in line.data" class="align-right">
+              <span ng-if="data.completion">{{ data.completion }} %</span>
+            </td>
+          </tr>
+
+          <tr>
+            <td>Revenue growth</td>
+            <td ng-repeat="data in line.data" class="align-right">
+              <span ng-if="data.growth && data.growth !== 0">{{ data.growth }} %</span>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </md-card-content>
+  </md-card>
+
+  <md-card class="details md-whiteframe-z2" ng-repeat="line in customers.data">
+    <md-card-title>
+      <h3>Customers</h3>
+    </md-card-title>
+
+    <md-card-content>
+      <table class="table">
+        <tbody>
+          <tr>
+            <td width="16%">&nbsp;</td>
+            <td ng-repeat="data in line.data" class="align-right" width="7%">
+              {{ data.month | shortMonthName }}
+            </td>
+          </tr>
+
+          <tr>
+            <td>Customers</td>
+            <td ng-repeat="data in line.data" class="align-right">
+              <span ng-if="data.amount && data.amount !== 0">{{ data.amount }}</span>
+            </td>
+          </tr>
+
+          <tr>
+            <td>Goal</td>
+            <td ng-repeat="data in line.data" class="align-right">
+              {{ data.goal }}
+            </td>
+          </tr>
+
+          <tr>
+            <td>Goal completion</td>
+            <td ng-repeat="data in line.data" class="align-right">
+              <span ng-if="data.completion">{{ data.completion }} %</span>
+            </td>
+          </tr>
+
+          <tr>
+            <td>Revenue growth</td>
+            <td ng-repeat="data in line.data" class="align-right">
+              <span ng-if="data.growth && data.growth !== 0">{{ data.growth }} %</span>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </md-card-content>
+  </md-card>

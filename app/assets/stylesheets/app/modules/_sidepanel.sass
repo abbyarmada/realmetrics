@@ -1,0 +1,71 @@
+#sidepanel
+  background-color: white
+  position: fixed
+  top: 0
+  right: -600px
+
+  width: 600px
+  min-width: 600px
+  max-width: 600px
+
+  height: 100vh
+  min-height: 100vh
+  max-height: 100vh
+
+  transition: all 300ms linear
+
+  z-index: 61
+
+  &.sidenav-open
+    right: 0
+
+    #sidepanel-container
+      position: relative
+      background-color: white
+      z-index: 63
+      height: 100vh
+      min-height: 100vh
+      max-height: 100vh
+      border-left: 2px solid $mainColor
+
+    #sidepanel-background
+      background-color: rgba(0, 0, 0, .7)
+      position: fixed
+      top: 0
+      bottom: 0
+      right: 0
+      left: 0
+      z-index: 62
+
+  div[ui-view]
+    header
+      background-color: $mainColor
+      color: white
+      font-family: $fontHeaderStack
+      font-size: 22px
+      padding: 18px
+
+    form
+      padding: 20px
+
+      height: calc(100vh - 174px)
+      min-height: calc(100vh - 174px)
+      max-height: calc(100vh - 174px)
+      overflow: scroll
+
+      footer
+        text-align: right
+        padding: 10px 20px
+        margin: -20px
+        border-top: 2px solid $mainColor
+        background-color: $lightGrey
+        position: absolute
+        bottom: 20px
+
+        width: calc(100% - 40px)
+
+        .md-warn
+          float: left
+
+        .md-primary
+          float: right

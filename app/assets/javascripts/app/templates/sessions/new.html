@@ -1,0 +1,39 @@
+<div layout="column" layout-align="center center" flex="100">
+  <md-card class="md-whiteframe-9dp">
+    <md-card-header>
+      <h1>Welcome back!</h1>
+    </md-card-header>
+
+    <md-card-content>
+      <form name="form" novalidate ng-submit="login(form)">
+        <div layout="row">
+          <md-input-container flex>
+            <label>Email</label>
+            <input type="email" ng-model="user.email" required>
+          </md-input-container>
+        </div>
+
+        <div layout="row">
+          <md-input-container flex>
+            <label>Password</label>
+            <input type="password" ng-model="user.password" required>
+          </md-input-container>
+        </div>
+
+        <div layout="row">
+          <div flex>
+            <a ui-sref="forgot_password">Forgot your password?</a>
+          </div>
+
+          <div flex class="align-right">
+            <md-button type="submit" class="md-raised md-primary">Log me in</md-button>
+          </div>
+        </div>
+      </form>
+    </md-card-content>
+
+    <md-card-footer>
+      Don't have an account yet? <a ui-sref="signup">Sign up!</a>
+    </md-card-footer>
+  </md-card>
+</div>

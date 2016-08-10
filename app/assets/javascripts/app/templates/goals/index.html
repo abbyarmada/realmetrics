@@ -1,0 +1,48 @@
+<h1 class="page-header md-whiteframe-z1">
+  Goals
+  <small>
+    Ready, aim, fire!
+  </small>
+</h1>
+
+<md-card class="details md-whiteframe-z2">
+  <md-card-title>
+    <h3>
+      Gross revenues goal
+      <small>
+      (This data is crawled from Stripe. You can
+      <a ui-sref="goals.set_goals({ metric: 'gross_revenue' })">set goals in batch</a>
+      or
+      <a ui-sref="goals.edit_goals({ metric: 'gross_revenue' })">edit your goals</a>
+      manually)
+      </small>
+    </h3>
+  </md-card-title>
+
+  <md-card-content>
+    <div class="ct-wrapper">
+      <div class="ct-chart" id="grossRevenueGoalsReport"></div>
+    </div>
+  </md-card-content>
+</md-card>
+
+<md-card class="details md-whiteframe-z2">
+  <md-card-title>
+    <h3>
+      Customers count goal
+      <small>
+      (This data is crawled from Stripe. You can
+      <a ui-sref="goals.set_goals({ metric: 'customers_count' })">set goals in batch</a>
+      or
+      <a ui-sref="goals.edit_goals({ metric: 'customers_count' })">edit your goals</a>
+      manually)
+      </small>
+    </h3>
+  </md-card-title>
+
+  <md-card-content>
+    <div class="ct-wrapper">
+      <div class="ct-chart" id="customersCountGoalsReport"></div>
+    </div>
+  </md-card-content>
+</md-card>

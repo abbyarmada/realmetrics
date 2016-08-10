@@ -1,0 +1,32 @@
+<h1 class="page-header md-whiteframe-z1">
+  Customers
+  <small>
+    All your customers, past and present.
+  </small>
+</h1>
+
+<md-card class="details md-whiteframe-z2">
+  <md-card-title>
+    <h3>Customers</h3>
+  </md-card-title>
+
+  <table class="table">
+    <thead>
+      <tr>
+        <th>Provider</th>
+        <th>Guid</th>
+        <th>Email</th>
+        <th>Plan</th>
+      </tr>
+    </thead>
+
+    <tbody>
+      <tr ng-repeat="customer in customers">
+        <td>{{ customer.provider }}</td>
+        <td><a ui-sref="customers.show({ id: customer.id })">{{ customer.guid }}</a></td>
+        <td>{{ customer.email }}</td>
+        <td>{{ customer.current_plan }}</td>
+      </tr>
+    </tbody>
+  </table>
+</md-card>

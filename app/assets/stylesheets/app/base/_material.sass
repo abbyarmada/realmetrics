@@ -1,0 +1,70 @@
+$layout-breakpoint-sm: 600px !default
+
+@media (min-width: $layout-breakpoint-sm)
+  md-toast
+    font-weight: 700
+
+    &.md-error
+      background-color: $declineColor
+      color: white
+
+    &.md-success
+      background-color: $successColor
+      color: white
+
+    &.md-warning
+      background-color: $neutralColor
+      color: $mainColor
+
+    &.md-full
+      position: fixed
+      left: 0
+      right: 0
+      top: 0
+      min-width: 100%
+      max-width: 100%
+      width: 100%
+
+    &.md-center
+      position: fixed
+      margin-top: 55px
+      margin-left: auto
+      margin-right: auto
+      left: 0
+      right: 0
+      width: 100%
+
+    md-icon
+      margin: 0 10px 0 0
+      height: 35px
+      width: 35px
+      color: $mainColor
+
+    .md-toast-message
+      margin-top: 3px
+      line-height: 15px
+
+    .md-toast-discard
+      float: right
+
+.datepicker-label
+  color: rgba(0, 0, 0, 0.54)
+  -webkit-font-smoothing: antialiased
+  transform: translate3d(0,6px,0) scale(.75)
+  padding-left: 2px
+  position: relative
+  top: -2px
+  display: block
+  left: -67px
+
+i[ng-drag-handle]
+  cursor: pointer
+
+[ng-drop].drag-enter
+  border: 3px solid $mainColor
+
+[ng-drag].dragging
+  border-width: 0px
+
+[ng-drag].dragging
+  opacity: 0.5

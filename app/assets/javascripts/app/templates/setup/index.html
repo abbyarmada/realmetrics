@@ -1,0 +1,22 @@
+<div layout="column" layout-align="start center" flex="100" ui-view>
+  <form name="form" novalidate ng-submit="complete(form)">
+    <md-card class="md-whiteframe-9dp">
+      <md-card-header>
+        <h1>Welcome to RealMetrics!</h1>
+      </md-card-header>
+
+      <md-card-content>
+        <p>
+          In order to provide you with information, we first need to fetch it from Stripe.
+        </p>
+        <p class="align-center">
+          <md-button class="md-raised md-primary" href="/auth/stripe_connect" target="_self">Connect Stripe account</md-button>
+        </p>
+      </md-card-content>
+
+      <md-card-footer>
+
+      </md-card-footer>
+    </md-card>
+  </form>
+</div>

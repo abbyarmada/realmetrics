@@ -1,0 +1,61 @@
+<h1 class="page-header md-whiteframe-z1">
+  Integrations
+  <small>
+    Connect with other apps you love & use!
+  </small>
+</h1>
+
+<md-card class="details md-whiteframe-z2">
+  <md-card-title>
+    <h3>
+      Stripe
+      <small ng-if="current_organization.integrations.stripe">
+        (can be edited on <a href="https://dashboard.stripe.com" target="_blank">Stripe dashboard</a> - Once changes are completed, you can <a href="#" ng-click="refreshStripeInfo()">refresh information</a>)
+      </small>
+    </h3>
+  </md-card-title>
+
+  <md-card-content ng-if="current_organization.integrations.stripe">
+    <div class="card-row">
+      <div class="key">Provider</div>
+      <div class="value">{{ current_organization.integrations.stripe.provider }} (<a href="#" ng-click="deletePaymentGateway(current_organization.integrations.stripe)">remove</a>)</div>
+    </div>
+
+    <div class="card-row">
+      <div class="key">Business</div>
+      <div class="value">
+        {{ current_organization.integrations.stripe.account.business_name }}
+        (<a href="{{ current_organization.integrations.stripe.account.business_url }}" target="_blank">{{ current_organization.integrations.stripe.account.business_url }}</a>)
+      </div>
+    </div>
+
+    <div class="card-row">
+      <div class="key">Currency</div>
+      <div class="value">{{ current_organization.integrations.stripe.account.default_currency }}</div>
+    </div>
+
+    <div class="card-row">
+      <div class="key">Email</div>
+      <div class="value">{{ current_organization.integrations.stripe.account.email }}</div>
+    </div>
+
+    <div class="card-row">
+      <div class="key">Country</div>
+      <div class="value">{{ current_organization.integrations.stripe.account.country }}</div>
+    </div>
+
+    <div class="card-row">
+      <div class="key">Statement description</div>
+      <div class="value">{{ current_organization.integrations.stripe.account.statement_descriptor }}</div>
+    </div>
+
+    <div class="card-row">
+      <div class="key">Timezone</div>
+      <div class="value">{{ current_organization.integrations.stripe.account.timezone }}</div>
+    </div>
+  </md-card-content>
+
+  <md-card-content ng-if="!current_organization.integrations.stripe">
+    <a href="/auth/stripe_connect" target="_self" ng-if="!current_organization.integrations.stripe">Connect Stripe account</a>
+  </md-card-content>
+</md-card>
