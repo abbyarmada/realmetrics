@@ -1,3 +1,5 @@
+[![Build Status](https://travis-ci.org/realmetrics/realmetrics.svg?branch=master)](https://travis-ci.org/realmetrics/realmetrics)
+
 ## How to get started
 
 Create a config/application.yml file with the following environment variables:
