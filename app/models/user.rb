@@ -28,7 +28,6 @@ class User < ActiveRecord::Base
 
   # Validations
   validates :email, presence: true, length: { maximum: 255 }, format: { with: /\A[^@\s]+@([^@\s]+\.)+[^@\s]+\z/ }, uniqueness: true
-  validates :password, presence: true, length: { maximum: 255 }, on: :create
 
   # Callbacks
   after_create :init_organization
@@ -43,7 +42,10 @@ class User < ActiveRecord::Base
     {
       id: id,
       email: email,
-      confirmed: confirmed_at.present?
+      confirmed: confirmed_at.present?,
+      permissions: {
+        delete: can_delete?
+      }
     }
   end
 

@@ -26,6 +26,7 @@ ActiveRecord::Schema.define(version: 20160606135352) do
     t.datetime "updated_at",      null: false
   end
 
+  add_index "goals", ["organization_id", "year", "month", "metric"], name: "idx_uk_goals", unique: true, using: :btree
   add_index "goals", ["organization_id"], name: "index_goals_on_organization_id", using: :btree
 
   create_table "identities", force: :cascade do |t|
@@ -39,6 +40,7 @@ ActiveRecord::Schema.define(version: 20160606135352) do
     t.datetime "updated_at",      null: false
   end
 
+  add_index "identities", ["organization_id", "provider", "uid"], name: "idx_uk_identities", unique: true, using: :btree
   add_index "identities", ["organization_id"], name: "index_identities_on_organization_id", using: :btree
 
   create_table "organizations", force: :cascade do |t|
@@ -66,6 +68,7 @@ ActiveRecord::Schema.define(version: 20160606135352) do
     t.boolean  "active"
   end
 
+  add_index "stripe_coupons", ["organization_id", "guid", "provider"], name: "idx_uk_stripe_coupons", unique: true, using: :btree
   add_index "stripe_coupons", ["organization_id"], name: "index_stripe_coupons_on_organization_id", using: :btree
 
   create_table "stripe_customers", force: :cascade do |t|
@@ -79,6 +82,7 @@ ActiveRecord::Schema.define(version: 20160606135352) do
     t.boolean  "delinquent"
   end
 
+  add_index "stripe_customers", ["organization_id", "guid", "provider"], name: "idx_uk_stripe_customers", unique: true, using: :btree
   add_index "stripe_customers", ["organization_id"], name: "index_stripe_customers_on_organization_id", using: :btree
 
   create_table "stripe_discounts", force: :cascade do |t|
@@ -91,6 +95,7 @@ ActiveRecord::Schema.define(version: 20160606135352) do
     t.datetime "ended_at"
   end
 
+  add_index "stripe_discounts", ["organization_id", "provider", "coupon_guid", "customer_guid", "subscription_guid"], name: "idx_uk_stripe_discounts", unique: true, using: :btree
   add_index "stripe_discounts", ["organization_id"], name: "index_stripe_discounts_on_organization_id", using: :btree
 
   create_table "stripe_events", force: :cascade do |t|
@@ -102,6 +107,7 @@ ActiveRecord::Schema.define(version: 20160606135352) do
     t.text     "event_data"
   end
 
+  add_index "stripe_events", ["organization_id", "guid", "provider"], name: "idx_uk_stripe_events", unique: true, using: :btree
   add_index "stripe_events", ["organization_id"], name: "index_stripe_events_on_organization_id", using: :btree
 
   create_table "stripe_plans", force: :cascade do |t|
@@ -118,6 +124,7 @@ ActiveRecord::Schema.define(version: 20160606135352) do
     t.integer  "interval_count"
   end
 
+  add_index "stripe_plans", ["organization_id", "guid", "provider"], name: "idx_uk_stripe_plans", unique: true, using: :btree
   add_index "stripe_plans", ["organization_id"], name: "index_stripe_plans_on_organization_id", using: :btree
 
   create_table "stripe_subscriptions", force: :cascade do |t|
@@ -140,6 +147,7 @@ ActiveRecord::Schema.define(version: 20160606135352) do
     t.datetime "current_period_started_at"
   end
 
+  add_index "stripe_subscriptions", ["organization_id", "guid", "provider"], name: "idx_uk_stripe_subscriptions", unique: true, using: :btree
   add_index "stripe_subscriptions", ["organization_id"], name: "index_stripe_subscriptions_on_organization_id", using: :btree
 
   create_table "stripe_transactions", force: :cascade do |t|
@@ -154,6 +162,7 @@ ActiveRecord::Schema.define(version: 20160606135352) do
     t.string   "transaction_type"
   end
 
+  add_index "stripe_transactions", ["organization_id", "guid", "provider"], name: "idx_uk_stripe_transactions", unique: true, using: :btree
   add_index "stripe_transactions", ["organization_id"], name: "index_stripe_transactions_on_organization_id", using: :btree
 
   create_table "users", force: :cascade do |t|

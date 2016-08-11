@@ -1,3 +1,8 @@
+test:
+  adapter: postgresql
+  database: realmetrics_test
+  host: localhost
+
 development:
   adapter: postgresql
   database: realmetrics_development

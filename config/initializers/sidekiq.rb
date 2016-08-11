@@ -1,10 +1,6 @@
 require 'sidekiq'
 require 'sidekiq/web'
 
-Sidetiq.configure do |config|
-  config.utc = true
-end
-
 Sidekiq.configure_server do |config|
   config.redis = { url: ENV['REDIS_URL'], namespace: 'realmetrics' }
 end
