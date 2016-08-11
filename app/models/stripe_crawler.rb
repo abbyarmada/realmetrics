@@ -130,20 +130,19 @@ class StripeCrawler
       next if event_data == []
       data = event_data
       data = data.first while data.is_a?(Array)
+      next if data.nil?
 
-      unless data.nil?
-        events << StripeEvent.build_from_stripe(organization, data)
+      events << StripeEvent.build_from_stripe(organization, data)
 
-        if StripeConfiguration.subscription_event?(data['type'])
-          subscriptions << StripeSubscription.build_from_stripe(organization, data['data']['object'])
-        elsif StripeConfiguration.customer_event?(data['type'])
-          customers << StripeCustomer.build_from_stripe(organization, data['data']['object'])
-        elsif StripeConfiguration.plan_event?(data['type'])
-          plans << StripePlan.build_from_stripe(organization, data['data']['object'])
-        end
-
-        StripeEvent.handle(organization, data['type'], data['data']['object'])
+      if StripeConfiguration.subscription_event?(data['type'])
+        subscriptions << StripeSubscription.build_from_stripe(organization, data['data']['object'])
+      elsif StripeConfiguration.customer_event?(data['type'])
+        customers << StripeCustomer.build_from_stripe(organization, data['data']['object'])
+      elsif StripeConfiguration.plan_event?(data['type'])
+        plans << StripePlan.build_from_stripe(organization, data['data']['object'])
       end
+
+      StripeEvent.handle(organization, data['type'], data['data']['object'])
     end
 
     [events, subscriptions, customers, plans]

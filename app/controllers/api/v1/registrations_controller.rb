@@ -16,7 +16,7 @@ module Api
           sign_in!(user)
           redirect_to "#{app_url}setup"
         else
-          redirect_to "#{website_url}"
+          redirect_to website_url
         end
       end
 

@@ -44,7 +44,7 @@ describe Api::V1::RegistrationsController, type: :controller do
       user = FactoryGirl.create(:user)
       request.session[:user_id] = user.id
 
-      patch :update, { user: { first_name: 'Updated' } }
+      patch :update, user: { first_name: 'Updated' }
 
       expect(response.status).to eq(200)
     end
@@ -53,7 +53,7 @@ describe Api::V1::RegistrationsController, type: :controller do
       user = FactoryGirl.create(:user)
       request.session[:user_id] = user.id
 
-      patch :update, { user: { first_name: 'Updated', current_password: '0000' } }
+      patch :update, user: { first_name: 'Updated', current_password: '0000' }
 
       expect(response.status).to eq(200)
     end
@@ -62,7 +62,7 @@ describe Api::V1::RegistrationsController, type: :controller do
       user = FactoryGirl.create(:user)
       request.session[:user_id] = user.id
 
-      patch :update, { user: { email: '' } }
+      patch :update, user: { email: '' }
 
       expect(response.status).to eq(422)
     end

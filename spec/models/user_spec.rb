@@ -25,15 +25,15 @@ RSpec.describe User, type: :model do
   context '.methods' do
     it { expect(user.confirm!).to be_truthy }
     it { expect(user.send_reset_password_instructions).to be_truthy }
-    it { expect(user.change_email! 'test@test.org').to be_truthy }
+    it { expect(user.change_email!('test@test.org')).to be_truthy }
 
     context 'can update password' do
       context 'with valid password' do
-        it { expect(user.can_update_password '00000000').to be_truthy }
+        it { expect(user.can_update_password('00000000')).to be_truthy }
       end
 
       context 'with invalid password' do
-        it { expect(user.can_update_password 'xxxxxxxx').to be_falsey }
+        it { expect(user.can_update_password('xxxxxxxx')).to be_falsey }
       end
     end
   end

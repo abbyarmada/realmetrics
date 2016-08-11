@@ -90,7 +90,7 @@ class StripePlan < ActiveRecord::Base
       :amount,
       :currency,
       :interval,
-      :interval_count,
+      :interval_count
     ]
   end
 end

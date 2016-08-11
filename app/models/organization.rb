@@ -58,11 +58,11 @@ class Organization < ActiveRecord::Base
   #
   # @return [Boolean] true if successful, false otherwise.
   def set_goals(year, month, metric, value, growth)
-    (year..Time.zone.today.year).each do |year|
-      (month..12).each do |month|
+    (year..Time.zone.today.year).each do |current_year|
+      (month..12).each do |current_month|
         goals.find_or_initialize_by(
-          year: year,
-          month: month,
+          year: current_year,
+          month: current_month,
           metric: metric
         ).update_attributes(
           value: value.to_i

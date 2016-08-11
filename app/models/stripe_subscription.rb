@@ -117,7 +117,7 @@ class StripeSubscription < ActiveRecord::Base
       :cancel_at_period_end,
       :canceled_at,
       :current_period_end_at,
-      :current_period_started_at,
+      :current_period_started_at
     ]
   end
 end

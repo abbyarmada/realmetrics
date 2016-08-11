@@ -40,19 +40,28 @@ class RevenuesReport < ReportBase
       }
     end
 
-    @kpis[:ytd] = {
-      amount: @data.sum { |x| x[:data].sum { |y| y[:amount] } },
-      goal: @data.sum { |x| x[:data].sum { |y| y[:goal] } },
-      completion: @data.sum { |x| x[:data].sum { |y| y[:completion] } },
-      growth: @data.sum { |x| x[:data].sum { |y| y[:growth] } }
-    }
+    @kpis[:ytd] = aggregate_to_day_values(:ytd)
+    @kpis[:mtd] = aggregate_to_day_values(:mtd)
+  end
 
-    @kpis[:mtd] = {
-      amount: @data.sum { |x| x[:data].sum { |y| y[:month] < Date.today.month ? y[:amount] : 0 } },
-      goal: @data.sum { |x| x[:data].sum { |y| y[:month] < Date.today.month ? y[:goal] : 0 } },
-      completion: @data.sum { |x| x[:data].sum { |y| y[:month] < Date.today.month ? y[:completion] : 0 } },
-      growth: @data.sum { |x| x[:data].sum { |y| y[:month] < Date.today.month ? y[:growth] : 0 } }
-    }
+  def aggregate_to_day_values(aggregation_type)
+    amount = 0
+    goal = 0
+    completion = 0
+    growth = 0
+
+    @data.map do |x|
+      x[:data].map do |y|
+        next unless (aggregation_type == :mtd && y[:month] < Time.zone.today.month) || aggregation_type == :ytd
+
+        amount += y[:amount]
+        goal += y[:goal]
+        completion += y[:completion]
+        growth += y[:growth]
+      end if x[:year] == Time.zone.today.year
+    end
+
+    { amount: amount, goal: goal, completion: completion, growth: growth }
   end
 
   def results

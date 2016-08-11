@@ -81,7 +81,7 @@ class StripeTransaction < ActiveRecord::Base
       :gross_amount,
       :fee_amount,
       :net_amount,
-      :transaction_type,
+      :transaction_type
     ]
   end
 end

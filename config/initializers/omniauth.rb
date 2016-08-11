@@ -7,6 +7,6 @@ Rails.application.config.middleware.use OmniAuth::Builder do
            callback_path: '/users/auth/stripe_connect/callback'
 end
 
-OmniAuth.config.on_failure = Proc.new do |env|
-  [302, {'Location' => "/auth/failure", 'Content-Type' => 'text/html'}, []]
+OmniAuth.config.on_failure = proc do
+  [302, { 'Location' => '/auth/failure', 'Content-Type' => 'text/html' }, []]
 end
