@@ -6,16 +6,7 @@ class RevenuesReport < ReportBase
 
   def render
     @data = []
-
-    @kpis = {
-      mtd: {
-        amount: 0,
-        goal: 0,
-        completion: 0,
-        growth: 0
-      }
-    }
-
+    @kpis = {}
     last_year = nil
 
     results.each do |res|
