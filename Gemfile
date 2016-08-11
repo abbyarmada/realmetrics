@@ -66,4 +66,5 @@ group :test do
   gem 'shoulda-matchers', '3.1.1'
   gem 'shoulda-callback-matchers', '1.1.4'
   gem 'json_spec', '1.1.4'
+  gem 'codeclimate-test-reporter', require: nil
 end
