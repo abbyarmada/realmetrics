@@ -1,3 +1,11 @@
+languages:
+  Ruby: true
+  JavaScript: true
+
+engines:
+  markdownlint:
+    enabled: true
+
 exclude_paths:
   - "log/"
   - "public/"
