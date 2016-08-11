@@ -14,3 +14,7 @@ services:
 
 addons:
   postgresql: "9.4"
+
+addons:
+  code_climate:
+    repo_token: 981eb9d81e6c62c5bd09240ee6f082f247dc129f29b9a0f66f15476c7d6a5fb3
