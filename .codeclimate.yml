@@ -1,7 +1,3 @@
-languages:
-  Ruby: true
-  JavaScript: true
-
 engines:
   markdownlint:
     enabled: true
@@ -23,8 +19,22 @@ engines:
     enabled: true
   rubocop:
     enabled: true
-
+ratings:
+  paths:
+  - Gemfile.lock
+  - "**.erb"
+  - "**.haml"
+  - "**.rb"
+  - "**.rhtml"
+  - "**.slim"
+  - "**.css"
+  - "**.inc"
+  - "**.js"
+  - "**.jsx"
+  - "**.module"
+  - "**.php"
+  - "**.py"
 exclude_paths:
-  - "log/"
-  - "public/"
-  - "tmp/"
+- "log/"
+- "public/"
+- "tmp/"
