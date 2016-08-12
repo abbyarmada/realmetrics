@@ -1,4 +1,6 @@
 [![Build Status](https://travis-ci.org/realmetrics/realmetrics.svg?branch=master)](https://travis-ci.org/realmetrics/realmetrics)
+[![Code Climate](https://codeclimate.com/github/realmetrics/realmetrics/badges/gpa.svg)](https://codeclimate.com/github/realmetrics/realmetrics)
+[![Test Coverage](https://codeclimate.com/github/realmetrics/realmetrics/badges/coverage.svg)](https://codeclimate.com/github/realmetrics/realmetrics/coverage)
 
 ## How to get started
 
